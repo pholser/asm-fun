@@ -2,6 +2,7 @@ package com.pholser.asm.fun;
 
 import org.objectweb.asm.AnnotationVisitor;
 import org.objectweb.asm.Attribute;
+import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.FieldVisitor;
 import org.objectweb.asm.MethodVisitor;
@@ -45,5 +46,11 @@ public class ClassPrinter extends ClassVisitor {
 
     public void visitEnd() {
         System.out.println('}');
+    }
+
+    public static void main(String[] args) throws Exception {
+        ClassPrinter printer = new ClassPrinter();
+        ClassReader reader = new ClassReader("java.lang.Runnable");
+        reader.accept(printer, 0);
     }
 }
