@@ -1,4 +1,4 @@
-package com.pholser.asm.fun;
+package com.pholser.asm;
 
 import org.objectweb.asm.ClassVisitor;
 

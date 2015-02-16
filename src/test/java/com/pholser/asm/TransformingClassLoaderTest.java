@@ -1,7 +1,8 @@
-package com.pholser.asm.fun;
+package com.pholser.asm;
 
 import java.lang.reflect.Modifier;
 
+import com.pholser.asm.visitor.Definalizer;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -18,19 +19,19 @@ public class TransformingClassLoaderTest {
 
     @Test
     public void stripsFinalModifierFromClass() throws Exception {
-        assumeTrue(Modifier.isFinal(FinalledUp.class.getModifiers()));
+        assumeTrue(Modifier.isFinal(Final.class.getModifiers()));
 
-        Class<?> definalized = loader.loadClass("com.pholser.asm.fun.FinalledUp");
+        Class<?> transformed = loader.loadClass("com.pholser.asm.Final");
 
-        assertFalse(Modifier.isFinal(definalized.getModifiers()));
+        assertFalse(Modifier.isFinal(transformed.getModifiers()));
     }
 
     @Test
     public void stripsFinalModifierFromMethods() throws Exception {
-        assumeTrue(Modifier.isFinal(WithFinalledUpMethods.class.getMethod("foo").getModifiers()));
+        assumeTrue(Modifier.isFinal(WithFinalMethods.class.getMethod("foo").getModifiers()));
 
-        Class<?> definalized = loader.loadClass("com.pholser.asm.fun.WithFinalledUpMethods");
+        Class<?> transformed = loader.loadClass("com.pholser.asm.WithFinalMethods");
 
-        assertFalse(Modifier.isFinal(definalized.getMethod("foo").getModifiers()));
+        assertFalse(Modifier.isFinal(transformed.getMethod("foo").getModifiers()));
     }
 }
