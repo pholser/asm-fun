@@ -2,7 +2,7 @@ package com.pholser.asm;
 
 import java.lang.reflect.Modifier;
 
-import com.pholser.asm.visitor.Definalizer;
+import com.pholser.asm.transformers.Definalizer;
 import org.junit.Before;
 import org.junit.Test;
 

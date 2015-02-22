@@ -1,4 +1,4 @@
-package com.pholser.asm.visitor;
+package com.pholser.asm.transformers;
 
 import com.pholser.asm.ClassTransformationFactory;
 import org.objectweb.asm.ClassVisitor;
@@ -8,7 +8,7 @@ import static org.objectweb.asm.Opcodes.*;
 
 public class Definalizer extends ClassVisitor {
     private Definalizer(ClassVisitor delegate) {
-        super(ASM4, delegate);
+        super(ASM5, delegate);
     }
 
     @Override public void visit(
